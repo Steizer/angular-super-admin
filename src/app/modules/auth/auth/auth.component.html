@@ -1,0 +1,21 @@
+<form fxFlex fxLayout="column">
+    is logged : {{authService.isLogged}}
+    <button type="button" (click)="authService.isLogged = true">Login</button>
+    <button type="button" (click)="authService.isLogged = false">Logout</button>
+</form>
+
+
+<section>
+    <form (ngSubmit)="onSubmit()" fxLayout="column"
+     fxLayoutAlign="center center" fxLayoutGap="10px" 
+     [formGroup]="loginForm">
+
+        <mat-form-field>
+            <input type ="email" matInput placeholder="email" 
+            formControlName="email"> 
+            <mat-hint>Please enter email</mat-hint>
+        </mat-form-field>
+
+    </form>
+
+</section>

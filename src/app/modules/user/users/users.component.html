@@ -1,0 +1,40 @@
+<!--<div *ngFor="let user of usersService.getUsers()">
+    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+</div>-->
+
+
+<!--<app-user-form-by-template></app-user-form-by-template>-->
+<!-- <app-user-form-by-code (intputsubmit) = "usersService.addUser($event)"></app-user-form-by-code>-->
+<app-user-form-by-code (intputsubmit)="addUser($event); "></app-user-form-by-code>
+
+
+<form>
+    <input placeholder="email filter" type = "text" #filter>
+    <button type="submit">filter</button>
+</form>
+
+<div *ngFor="let user of (users |async | filterByEmail:filter.value)">
+    <app-user (select)="currentUser = $event" [user]="user"></app-user>
+</div>
+
+-------------------------------------<br>
+----------User resolver--------------<br>
+-------------------------------------<br>
+
+<div *ngFor="let user of (usersByResolver )">
+    <app-user (select)="showDetails($event)" [user]="user"></app-user>
+</div>
+
+<pre *ngIf="currentUser" >
+current selected user: {{currentUser | json}}
+</pre>
+
+<router-outlet></router-outlet>
+
+-------------------------------------<br>
+----------User State--------------<br>
+-------------------------------------<br>
+
+<div *ngFor="let user of users$ | async">
+    <app-user (select)="showDetails($event)" [user]="user"></app-user>
+</div>

@@ -1,0 +1,6 @@
+<div class="user" [ngClass]="{'is-admin': user.isAdmin}">
+    {{user.id}} {{user.email}} {{user.password}} {{user.organisation}} {{user.isAdmin}}
+    <button (click)="user.toggleAdmin()">admin</button>
+    <button (click)="select.emit(user)">select</button>
+</div>
+

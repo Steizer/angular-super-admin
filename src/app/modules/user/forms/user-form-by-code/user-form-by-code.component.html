@@ -1,0 +1,25 @@
+<form (ngSubmit) = "register()" [formGroup]="userForm">
+    <div>
+        <label>Email : </label><input formControlName="email">
+        <div style="color: red;" *ngIf="emailCtrl.hasError('required')">Email is required</div>
+        <div style="color: red;" *ngIf="emailCtrl.hasError('email')">Not email template</div>
+        <div style="color: red;" *ngIf="emailCtrl.hasError('min')">10 min</div>
+        <div style="color: red;" *ngIf="userForm.controls.email.errors?.not_available">Email not aivailable</div>
+
+    </div>
+    <div>
+        <label>User : </label><input formControlName="username">
+    </div>
+    <div>
+        <label>Password : </label><input type = "password"formControlName="password">
+    </div>
+    <div>
+        <label>Organisation : </label><input formControlName="organisation">
+        <div style="color: red;" *ngIf="orgaCtrl.hasError('isToto')">User toto is not valid</div>
+ 
+    </div>
+      <button [disabled]="userForm.invalid" type = "submit">Register</button>
+      <pre>
+        {{userForm.value | json}}
+    </pre>
+</form>
